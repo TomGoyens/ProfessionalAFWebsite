@@ -1,0 +1,140 @@
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.ButifuPicthuhh {
+  background-image: url(../images/Artsy2.jpg);
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  height: 250px;
+  text-align: center;
+}
+
+.header {
+  background-color: #73d7c6;
+  text-align: center;
+  height: 100px;
+}
+
+.swoop {
+  position: fixed;
+  background-color: #fff;
+  top: -100%;
+  width: 100vw;
+  height: 100vh;
+  transition: 1s;
+  z-index: 5;
+}
+
+.bigList ul {
+  position: fixed;
+  top: -50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  transition: 1s;
+  transition-delay: 150ms;
+  z-index: 10;
+  text-align: center;
+  font-size: 24px;
+  font-family: sans-serif;
+}
+
+.listElement {
+  padding: 5px 10px;
+}
+
+.bigList::before,
+.bigList::after {
+  position: fixed;
+  content: "";
+  background-color: #73d7c6;
+  height: 100vh;
+  width: 0vw;
+  top: 0;
+  transition: 0.5s;
+  transition-delay: 150ms;
+  z-index: 10;
+}
+
+.bigList::after {
+  right: 0;
+}
+
+.bigList::before {
+  left: 0;
+}
+
+.menu-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  transition: 1.5s ease-out;
+  transform: rotate(0);
+  z-index: 999;
+}
+.menu-toggle:hover {
+  cursor: pointer;
+}
+
+.menu-toggle.active {
+  animation-name: cogTurn;
+  animation-duration: 1s;
+  animation-timing-function: ease-in;
+  animation-direction: alternate;
+  transform: rotate(360deg);
+}
+
+.swoop.active {
+  position: fixed;
+  top: 0%;
+  transition: 1s;
+}
+
+.bigList.active ul {
+  position: fixed;
+  top: 50%;
+}
+
+.bigList.active::after,
+.bigList.active::before {
+  width: 25vw;
+  transition: 1s;
+}
+
+.cog {
+  fill: rgba(100, 100, 100, 0.6);
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.content {
+  height: 600px;
+  margin: 10%;
+  text-align: justify;
+}
+
+.sticky + .content {
+  padding-top: 102px;
+}
+
+@keyframes cogTurn {
+  0% {
+    transform: rotate(0deg);
+  }
+  90% {
+    transform: rotate(365deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/*# sourceMappingURL=main.css.map */
