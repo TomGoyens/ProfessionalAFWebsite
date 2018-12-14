@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   list-style: none;
+  box-sizing: border-box;
 }
 
 .ButifuPicthuhh {
@@ -20,13 +21,35 @@
   height: 100px;
 }
 
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.cog {
+  fill: rgba(100, 100, 100, 0.6);
+}
+
+.menu-toggle {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  transition: 1s ease-out;
+  transform: rotate(0);
+  z-index: 999;
+}
+.menu-toggle:hover {
+  cursor: pointer;
+}
+
 .swoop {
   position: fixed;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.5);
   top: -100%;
   width: 100vw;
   height: 100vh;
-  transition: 1s;
+  transition: 0.5s;
   z-index: 5;
 }
 
@@ -35,8 +58,7 @@
   top: -50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  transition: 1s;
-  transition-delay: 150ms;
+  transition: 0.5s;
   z-index: 10;
   text-align: center;
   font-size: 24px;
@@ -55,8 +77,8 @@
   height: 100vh;
   width: 0vw;
   top: 0;
-  transition: 1s;
-  transition-delay: 300ms;
+  transition: 0.5s;
+  transition-delay: 200ms;
   z-index: 10;
 }
 
@@ -66,18 +88,6 @@
 
 .bigList::before {
   left: 0;
-}
-
-.menu-toggle {
-  position: fixed;
-  bottom: 10px;
-  right: 10px;
-  transition: 1.5s ease-out;
-  transform: rotate(0);
-  z-index: 999;
-}
-.menu-toggle:hover {
-  cursor: pointer;
 }
 
 .menu-toggle.active {
@@ -92,30 +102,20 @@
   position: fixed;
   top: 0%;
   transition: 1s;
-  transition-delay: 0.3s;
+  transition-delay: 0.2s;
 }
 
 .bigList.active ul {
   position: fixed;
   top: 50%;
-  transition: 1s;
-  transition-delay: 0.3s;
+  transition: 0.5s;
+  transition-delay: 0.2s;
 }
 
 .bigList.active::after,
 .bigList.active::before {
   width: 25vw;
-  transition: 1s;
-}
-
-.cog {
-  fill: rgba(100, 100, 100, 0.6);
-}
-
-.sticky {
-  position: fixed;
-  top: 0;
-  width: 100%;
+  transition: 0.5s;
 }
 
 .content {
@@ -128,12 +128,240 @@
   padding-top: 102px;
 }
 
+.load-btn {
+  height: 100px;
+  width: 100px;
+  border-radius: 50px;
+  background-color: #73d7c6;
+  font-family: sans-serif;
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+.load-btn p {
+  text-align: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.load-btn div:nth-child(6), .load-btn div:nth-child(5), .load-btn div:nth-child(4), .load-btn div:nth-child(3), .load-btn div:nth-child(2), .load-btn div:nth-child(1) {
+  height: 1px;
+  width: 1px;
+  border-style: solid;
+  border-width: 2px;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+  position: absolute;
+  top: 50%;
+  transition: 1s;
+  box-sizing: border-box;
+}
+
+.load-btn div:nth-child(1) {
+  left: 5%;
+  border-right-color: transparent;
+}
+
+.load-btn div:nth-child(2) {
+  left: 10%;
+  border-right-color: transparent;
+}
+
+.load-btn div:nth-child(3) {
+  left: 15%;
+  border-right-color: transparent;
+}
+
+.load-btn div:nth-child(4) {
+  right: 5%;
+  border-left-color: transparent;
+}
+
+.load-btn div:nth-child(5) {
+  right: 10%;
+  border-left-color: transparent;
+}
+
+.load-btn div:nth-child(6) {
+  right: 15%;
+  border-left-color: transparent;
+}
+
+.load-btn.active div:nth-child(6), .load-btn.active div:nth-child(5), .load-btn.active div:nth-child(4), .load-btn.active div:nth-child(3), .load-btn.active div:nth-child(2), .load-btn.active div:nth-child(1) {
+  top: 0;
+  border-radius: 50%;
+  animation-name: spinSpinVogelspin;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+}
+
+.load-btn.active div:nth-child(1) {
+  height: 90%;
+  width: 90%;
+  top: 5%;
+  border-right-color: transparent;
+  animation-duration: 4s;
+}
+
+.load-btn.active div:nth-child(2) {
+  height: 80%;
+  width: 80%;
+  top: 10%;
+  border-right-color: transparent;
+  animation-duration: 3.5s;
+  animation-direction: reverse;
+}
+
+.load-btn.active div:nth-child(3) {
+  height: 70%;
+  width: 70%;
+  top: 15%;
+  border-right-color: transparent;
+  animation-duration: 2s;
+  animation-direction: alternate;
+}
+
+.load-btn.active div:nth-child(4) {
+  height: 90%;
+  width: 90%;
+  top: 5%;
+  border-left-color: transparent;
+  animation-duration: 4s;
+}
+
+.load-btn.active div:nth-child(5) {
+  height: 80%;
+  width: 80%;
+  top: 10%;
+  border-left-color: transparent;
+  animation-duration: 3.5s;
+  animation-direction: reverse;
+}
+
+.load-btn.active div:nth-child(6) {
+  height: 70%;
+  width: 70%;
+  top: 15%;
+  border-left-color: transparent;
+  animation-duration: 2s;
+  animation-direction: alternate;
+}
+
+.ezLoader {
+  height: 75px;
+  width: 75px;
+  border-radius: 50%;
+  cursor: pointer;
+  position: relative;
+  margin-left: 50%;
+  transform: translate(-50%, 0);
+}
+.ezLoader p {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.ezLoader div {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: 10px solid #f3f3f3;
+  transition: 0.5s;
+}
+.ezLoader div.active {
+  border-top: 10px solid #3498db;
+  transition: 0.5s;
+  animation-name: spinSpinVogelspin;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+  transition: 0.5s;
+}
+
+.toDoApp {
+  width: 70%;
+  margin: 15%;
+}
+
+.toDoHeader {
+  background-color: #73d7c6;
+  padding: 30px 40px;
+  text-align: center;
+}
+.toDoHeader h2 {
+  margin: 8px;
+}
+.toDoHeader .formToDo {
+  display: flex;
+}
+.toDoHeader .formToDo input {
+  width: 80%;
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 0;
+}
+.toDoHeader .formToDo .addToDoBtn {
+  width: 20%;
+  background-color: #2b2b2b;
+  color: white;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+.toDoHeader .formToDo .addToDoBtn:hover {
+  background-color: #5b5b5b;
+}
+
+.toDoList {
+  width: 100%;
+}
+
+.toDoListItem {
+  cursor: pointer;
+}
+.toDoListItem:hover {
+  background-color: gray;
+}
+.toDoListItem:nth-child(odd) {
+  background-color: #f8f8ff;
+}
+.toDoListItem:nth-child(even) {
+  background-color: white;
+}
+.toDoListItem .checked {
+  text-decoration: line-through;
+  background-color: darkgray;
+  color: white;
+}
+
+.checked {
+  text-decoration: line-through;
+  background-color: darkgray;
+  color: white;
+}
+
 @keyframes cogTurn {
   0% {
     transform: rotate(0deg);
   }
   90% {
     transform: rotate(365deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+@keyframes spinSpinVogelspin {
+  0% {
+    transform: rotate(0);
   }
   100% {
     transform: rotate(360deg);
