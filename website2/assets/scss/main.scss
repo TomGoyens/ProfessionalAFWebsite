@@ -30,6 +30,7 @@ $themeColor: #73d7c6;
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 5;
 }
 
 //very awesome swooping and screen covering animated menu-----------------------
@@ -53,7 +54,7 @@ $themeColor: #73d7c6;
 
 .swoop{
   position: fixed;
-  background-color: rgba(255,255,255,0.5);
+  background-color: rgba(255,255,255,1);
   top:-100%;
   width: 100vw;
   height: 100vh;
@@ -110,7 +111,7 @@ $themeColor: #73d7c6;
 .swoop.active{
   position: fixed;
   top: 0%;
-  transition: 1.0s;
+  transition: 0.5s;
   transition-delay: 0.20s;
 }
 
@@ -290,14 +291,15 @@ $themeColor: #73d7c6;
     width: 100%;
     border-radius: 50%;
     border: 10px solid #f3f3f3;
-    transition: 0.5s;
-    &.active{
-      border-top: 10px solid #3498db;
-      transition: 0.5s;
+    &.Gianni{
       animation-name: spinSpinVogelspin;
       animation-timing-function: linear;
       animation-duration: 2s;
       animation-iteration-count: infinite;
+      transition: 0.5s;
+    }
+    &.active{
+      border-top: 10px solid #3498db;
       transition: 0.5s;
     }
   }
@@ -338,32 +340,61 @@ $themeColor: #73d7c6;
   }
 }
 
-.toDoList{
-  width: 100%;
+.toDoApp{
+  ul{
+    width: 100%;
+    li{
+      text-decoration: none;
+    }
+    li:nth-child(odd){
+      background-color: #e8e8ef;
+      &:hover{
+        background-color: gray;
+      }
+    }
+    li:nth-child(even){
+      background-color: white;
+      &:hover{
+        background-color: gray;
+      }
+    }
+  }
 }
 
 .toDoListItem{
   cursor: pointer;
-  &:hover{
-    background-color: gray;
-  }
-  &:nth-child(odd){
-    background-color: #f8f8ff;
-  }
-  &:nth-child(even){
-    background-color: white;
-  }
-  .checked{
-    text-decoration: line-through;
-    background-color: darkgray;
-    color: white;
+  position: relative;
+  padding: 0.5em;
+  span{
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 0.5em 1em;
+    &:hover{
+      background-color: red;
+      color: white
+    }
   }
 }
 
-.checked{
+.toDoApp {
+  ul li.checked{
+  transition: 0.5s;
   text-decoration: line-through;
   background-color: darkgray;
   color: white;
+  &::before{
+    content:"";
+    position: absolute;
+    left: 0.5em;
+    height: 0.4em;
+    width: 1em;
+    border: solid 2px white;
+    border-top-style: none;
+    border-right-style: none;
+    transform: rotate(-45deg);
+    }
+  }
 }
 
 //animation---------------------------------------------------------------------

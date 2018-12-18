@@ -32,20 +32,31 @@ ezLoader.addEventListener('click', ezLoadStart);
 
 function ezLoadStart(){
   ezLoader.children[0].classList.toggle("active");
+  console.log(ezLoader.children[0].classList.contains("Gianni"));
+  if (ezLoader.children[0].classList.contains("Gianni")){
+    setTimeout(function() {
+      ezLoader.children[0].classList.toggle("Gianni");
+    }, 500);
+  } else {
+    ezLoader.children[0].classList.toggle("Gianni");
+  }
+
 }
 
 
 function addToToDo(){
-  var toDoListElement = document.createElement("li");
-  toDoListElement.classList.add("toDoListItem");
-  var toDoListElementClose = document.createElement("span");
+  var toDoListItem = document.createElement("li");
+  toDoListItem.classList.add("toDoListItem");
+  var toDoListItemClose = document.createElement("span");
   var toDoInput = document.querySelector(".inputToDo").value;
-  console.log(toDoInput);
-  toDoListElement.innerHTML = toDoInput;
-  toDoListElementClose.innerHTML = "\u00D7";
+  toDoListItem.innerHTML = toDoInput;
+  toDoListItemClose.innerHTML = "\u00D7";
   var theToDoList = document.querySelector(".toDoList");
-  toDoListElement.appendChild(toDoListElementClose);
-  theToDoList.appendChild(toDoListElement);
+  toDoListItemClose.addEventListener("click", function(){
+    event.target.parentElement.remove(event.target.parentElement);
+  });
+  toDoListItem.appendChild(toDoListItemClose);
+  theToDoList.appendChild(toDoListItem);
 
 }
 
@@ -58,25 +69,15 @@ function checkToDo(){
 var addToDoBtn = document.querySelector(".addToDoBtn");
 addToDoBtn.addEventListener ('click', addToToDo);
 
-/*
-function checkToDo(){
-  if (this.target.tagName === 'LI') {
-    this.target.classList.toggle('checked');
+
+function checkToDo(event){
+  if (event.target.tagName === 'LI') {
+    event.target.classList.toggle('checked');
   }
 }
 var list = document.querySelector('.toDoList');
-list.addEventListener('click', checkToDo, false);
-*/
-var list = document.querySelector('.toDoList');
-list.addEventListener('click', function(ev) {
-  if (ev.target.tagName === 'LI') {
-    ev.target.classList.toggle('checked');
-  }
-}, false);
-
-/*to use:
-            innerHTML
-            queryselector
-            createElement("li")
-
-            */
+list.addEventListener('click', checkToDo);
+var listItems = document.getElementsByClassName("toDoListItem");
+for(let i = 0; i < listItems; i++){
+  listItems[i].children[0].addEventListener
+}

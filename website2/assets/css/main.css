@@ -25,6 +25,7 @@
   position: fixed;
   top: 0;
   width: 100%;
+  z-index: 5;
 }
 
 .cog {
@@ -45,7 +46,7 @@
 
 .swoop {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.5);
+  background-color: white;
   top: -100%;
   width: 100vw;
   height: 100vh;
@@ -101,7 +102,7 @@
 .swoop.active {
   position: fixed;
   top: 0%;
-  transition: 1s;
+  transition: 0.5s;
   transition-delay: 0.2s;
 }
 
@@ -273,15 +274,16 @@
   width: 100%;
   border-radius: 50%;
   border: 10px solid #f3f3f3;
-  transition: 0.5s;
 }
-.ezLoader div.active {
-  border-top: 10px solid #3498db;
-  transition: 0.5s;
+.ezLoader div.Gianni {
   animation-name: spinSpinVogelspin;
   animation-timing-function: linear;
   animation-duration: 2s;
   animation-iteration-count: infinite;
+  transition: 0.5s;
+}
+.ezLoader div.active {
+  border-top: 10px solid #3498db;
   transition: 0.5s;
 }
 
@@ -320,32 +322,57 @@
   background-color: #5b5b5b;
 }
 
-.toDoList {
+.toDoApp ul {
   width: 100%;
+}
+.toDoApp ul li {
+  text-decoration: none;
+}
+.toDoApp ul li:nth-child(odd) {
+  background-color: #e8e8ef;
+}
+.toDoApp ul li:nth-child(odd):hover {
+  background-color: gray;
+}
+.toDoApp ul li:nth-child(even) {
+  background-color: white;
+}
+.toDoApp ul li:nth-child(even):hover {
+  background-color: gray;
 }
 
 .toDoListItem {
   cursor: pointer;
+  position: relative;
+  padding: 0.5em;
 }
-.toDoListItem:hover {
-  background-color: gray;
+.toDoListItem span {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.5em 1em;
 }
-.toDoListItem:nth-child(odd) {
-  background-color: #f8f8ff;
-}
-.toDoListItem:nth-child(even) {
-  background-color: white;
-}
-.toDoListItem .checked {
-  text-decoration: line-through;
-  background-color: darkgray;
+.toDoListItem span:hover {
+  background-color: red;
   color: white;
 }
 
-.checked {
+.toDoApp ul li.checked {
+  transition: 0.5s;
   text-decoration: line-through;
   background-color: darkgray;
   color: white;
+}
+.toDoApp ul li.checked::before {
+  content: "";
+  position: absolute;
+  left: 0.5em;
+  height: 0.4em;
+  width: 1em;
+  border: solid 2px white;
+  border-top-style: none;
+  border-right-style: none;
+  transform: rotate(-45deg);
 }
 
 @keyframes cogTurn {
